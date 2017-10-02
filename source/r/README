@@ -1,0 +1,11 @@
+This folder contains the source for the R packages required for the R
+benchmarks.  You will need system installations of both R and MPI available.
+For issues you may encounter related to building pbdMPI, see the package
+vignette: 
+https://cran.r-project.org/web/packages/pbdMPI/vignettes/pbdMPI-guide.pdf
+
+To install, run (in this order):
+
+R CMD INSTALL rlecuyer_0.3-4.tar.gz
+R CMD INSTALL pbdMPI_0.3-3.tar.gz
+R CMD INSTALL kazaam_0.2-0.tar.gz
