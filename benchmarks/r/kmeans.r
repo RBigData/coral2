@@ -19,10 +19,7 @@ data = generator(m.local, n, centers)
 m = m.local * comm.size()
 x = shaq(data, m, n, checks=FALSE)
 
-time = comm.timer({
-  for (k in 2:4)
-    km(x, k=k, seed=1234)
-})
+time = comm.timer(lapply(2:4, km(x, k=k, seed=1234))
 
 comm.print(time)
 
