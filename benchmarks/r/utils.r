@@ -1,7 +1,7 @@
 args = commandArgs(trailingOnly = TRUE)
 
-suppressPackageStartupMessages(library(stats))
-suppressPackageStartupMessages(library(kazaam))
+suppressMessages(library(stats, quietly=TRUE))
+suppressMessages(library(kazaam, quietly=TRUE))
 
 get_dims = function(args)
 {
