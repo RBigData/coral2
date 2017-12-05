@@ -1,4 +1,4 @@
-args = commandArgs(trailingOnly = TRUE)
+args = commandArgs(trailingOnly=TRUE)
 
 suppressMessages(library(stats, quietly=TRUE))
 suppressMessages(library(kazaam, quietly=TRUE))
@@ -9,7 +9,7 @@ get_dims = function(args)
     comm.stop("the test must be run in batch")
   
   if (length(args) != 2)
-    comm.stop(" incorrect number of arguments: usage is 'mpirun -np n Rscript princomp.r num_local_rows num_global_cols")
+    comm.stop(" incorrect number of arguments: usage is 'mpirun -np n Rscript $BENCHMARK.r num_local_rows num_global_cols")
   
   m.local = as.double(args[1])
   n = as.double(args[2])
