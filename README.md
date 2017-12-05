@@ -50,3 +50,23 @@ Our implementation of the benchmark can be found at `benchmarks/r/kmeans.r`.
 The benchmark consists of a linear 2-class SVM fit, calculating the feature weights. The data matrix of predictors should be random normal. The response should be taken to be 1 if the first predictor is greater than 0, and -1 otherwise.
 
 Our implementation of the benchmark can be found at `benchmarks/r/svm.r`.
+
+
+
+## Validation
+
+We use random data in the benchmarks in order to keep the benchmarks as amenable to every hardware solution possible.  We strongly believe this approach is to the advantage of every vendor.  However, this makes the benchmark runs difficult to verify.  So we have included small verification scripts to be run in companion with the benchmarks themselves.  
+
+It would be possible to do something underhanded (fast but incorrect) on the large benchmarks while passing the small scale tests.  But remember that we have chosen this path for the vendor's benefit.  Please do not betray that trust.
+
+Each validation script should be run on two nodes and use the same (specified) kernel as its benchmark counterpart.  Each will use the famous iris dataset of R. A. Fisher (included).  The rows of the dataset have been randomly shuffled and the species variable has been coded to 1=setosa, 2=versicolor, and 3=virginica.  Any other settings we leave to the vendor.  Performance measurements are not desired, only the validation.
+
+### SVD
+
+This validation script shows that the PCA benchmark is working correctly by testing the SVD kernel.  The validation consists of reading the iris dataset, removing the species column, factoring the resulting matrix, and then multiplying the factored matrices (from SVD) back together.  The mean absolute error (average of the difference in absolute value) of the two matrices should be computed.  The test passes if this value is less than the square root of machine epsilon for each type (as specified by IEEE 754).
+
+### k-means
+
+Using k=3 centroids (the true value), and 100 starts using seeds 1 to 100, the labels for each observation should be computed.  These will be compared against the true values (from the 'species' label of the dataset) using [rand measure](https://en.wikipedia.org/wiki/Rand_index).  Take the largest among these values.  This should be greater than 75% to be considered successful.
+
+### SVM
