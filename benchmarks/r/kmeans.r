@@ -1,6 +1,8 @@
-### 1342177     100
 source("./utils.r")
 comm.set.seed(1234, diff=TRUE)
+if (storage == "float")
+  comm.stop("float not supported for k-means")
+
 
 centers = c(0, 2, 10)
 k.true = length(centers)

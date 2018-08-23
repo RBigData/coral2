@@ -1,5 +1,7 @@
 source("./utils.r")
 comm.set.seed(1234, diff=FALSE)
+if (storage == "float")
+  comm.stop("float not supported for svm")
 
 
 generator = function(m, n, means=c(0, 2))
