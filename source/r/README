@@ -1,5 +1,5 @@
 This folder contains the source for the R packages required for the R
-benchmarks.  You will need system installations of both R and MPI available.
+benchmarks. You will need system installations of both R and MPI available.
 For issues you may encounter related to building pbdMPI, see the package
 vignette: 
 https://cran.r-project.org/web/packages/pbdMPI/vignettes/pbdMPI-guide.pdf
